@@ -12,11 +12,13 @@ This example use [AutoKeras](https://autokeras.com/) to train a CNN model with t
 * [TF Lite runtime](https://github.com/google-coral/pycoral/releases/) 2.5.0 post1 (both PC and RPis)
 * [OpenCV](https://pypi.org/project/opencv-python/) 4.5.5
 
+If you have GPU and installed CUDA, AutoKeras will use it for training.
+
 ### Files
 
 ```mnist_tflite_trainer.py``` is the model trainer and ```mnist.tflite``` was my result generated from it.
 
-The output of the trainer is as follows:
+The output of the trainer is as follows (with GPU):
 
 ```
 Trial 1 Complete [00h 04m 14s]
