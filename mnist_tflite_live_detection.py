@@ -43,15 +43,13 @@ while cap.isOpened():
     frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
     # image thresholding (to black and white)
-    _, frame_binary = cv2.threshold(frame_gray, 0, 255,
-                                    cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+    _, frame_binary = cv2.threshold(frame_gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
     
     # do morphological closing to filter out noise
     frame_binary = cv2.morphologyEx(frame_binary, cv2.MORPH_CLOSE, MORPH_KERNEL)
     
     # find contours (possible digits area) in the frame
-    contours, _ = cv2.findContours(frame_binary,
-                                   cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(frame_binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     # iterate all contours
     for contour in contours:
