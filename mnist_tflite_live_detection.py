@@ -42,7 +42,7 @@ while cap.isOpened():
     # convert to gray
     frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
-    # convert to binary (black and white)
+    # image thresholding (to black and white)
     _, frame_binary = cv2.threshold(frame_gray, 0, 255,
                                     cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
     
