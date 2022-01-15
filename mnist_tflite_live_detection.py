@@ -70,8 +70,7 @@ while cap.isOpened():
         r = max(w, h)
         y_pad = ((w - h) // 2 if w > h else 0) + r // 5
         x_pad = ((h - w) // 2 if h > w else 0) + r // 5
-        img = cv2.copyMakeBorder(img, top=y_pad, bottom=y_pad, left=x_pad, right=x_pad,
-                                 borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0))
+        img = cv2.copyMakeBorder(img, top=y_pad, bottom=y_pad, left=x_pad, right=x_pad, borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0))
         
         # resize image to input size
         img = cv2.resize(img, INPUT_SHAPE, interpolation=cv2.INTER_AREA)
@@ -91,8 +90,7 @@ while cap.isOpened():
         
         # draw rectangle and text label around the image area
         cv2.rectangle(frame, (x, y), (x + w, y + h), CONTOUR_COLOR, 2)
-        cv2.putText(frame, str(label), (x + w // 5, y - h // 5),
-                    cv2.FONT_HERSHEY_COMPLEX, LABEL_SIZE, LABEL_COLOR, 2)
+        cv2.putText(frame, str(label), (x + w // 5, y - h // 5), cv2.FONT_HERSHEY_COMPLEX, LABEL_SIZE, LABEL_COLOR, 2)
     
     # display the frame
     cv2.imshow('MNIST Live Detection', frame)
