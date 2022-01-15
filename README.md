@@ -109,7 +109,7 @@ My model is 611 KB and its Lite version is 432 KB.
 
 ```mnist_tflite_live_detection.py``` is the main detection script. It can use either Tensorflow Lite from standard Tensorflow package or the pure TF Lite runtime.
 
-### Note on binary threshold
+### Note on image thresholding
 
 In the detection script OpenCV will do automatic image thresholding to convert the video frame to black and white, in order to get clean images of digits. For most of the time it works well, as long as you provide a bright and evenly-lighted surface, but you may want to manually control the threshold when needed:
 
