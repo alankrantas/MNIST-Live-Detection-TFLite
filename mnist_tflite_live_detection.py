@@ -1,4 +1,4 @@
-TF_LITE_MODEL = './mnist.tflite'
+TF_LITE_MODEL = './mnist.tflite'  # TF Lite model
 IMG_W = 640  # video capture width
 IMG_H = 480  # video capture height
 IMG_BORDER = 40  # video capture border width (won't be used for detection)
