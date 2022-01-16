@@ -9,7 +9,7 @@ Due to the training dataset your digits has to be as square as possible. Long, t
 ### Testing environment
 
 * Python 3.9.9 (PC); Pytho 3.7.3 (Raspberry Pis)
-* AutoKeras 1.0.16 post1 (will install Numpy, Pandas and scikit-learn, etc. if you don't have them)
+* AutoKeras 1.0.16 post1 (will install Numpy, Pandas, scikit-learn and Tensorflow etc. if you don't have them)
 * Tensorflow 2.5.2
 * [TF Lite runtime](https://github.com/google-coral/pycoral/releases/) 2.5.0 post1 (both PC and RPis)
 * [OpenCV](https://pypi.org/project/opencv-python/) 4.5.5
