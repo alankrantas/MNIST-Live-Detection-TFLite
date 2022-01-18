@@ -19,7 +19,7 @@ If you have GPU and installed CUDA, AutoKeras will use it for training.
 
 ### Files
 
-```mnist_tflite_trainer.py``` is the model trainer and ```mnist.tflite``` was my result generated from it.
+```mnist_tflite_trainer.py``` is the model trainer and ```mnist.tflite``` was my result generated from it. It will print out the model summary and test prediction result, then save the model in TF Lite version.
 
 The output of the trainer is as follows (with GPU):
 
@@ -114,7 +114,7 @@ My model is 611 KB and its Lite version is 432 KB.
 
 ## Model test
 
-```mnist_tflite_model_test.py``` can be used to test the TF lite model (using the original MNIST test dataset):
+```mnist_tflite_model_test.py``` can be used to test the TF lite model (also using the original MNIST test dataset):
 
 ```
 Loading ./mnist.tflite ...
