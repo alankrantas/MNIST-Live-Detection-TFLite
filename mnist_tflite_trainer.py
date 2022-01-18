@@ -1,5 +1,5 @@
-TF_LITE_MODEL = './mnist.tflite'
-SAVE_KERAS_MODEL = True
+TF_LITE_MODEL = './mnist.tflite'  # the file name for the generated TF Lite model
+SAVE_KERAS_MODEL = True  # save the original Keras model
 
 import autokeras as ak
 import tensorflow as tf
