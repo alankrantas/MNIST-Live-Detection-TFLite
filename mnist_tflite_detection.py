@@ -4,8 +4,6 @@ IMG_W = 640  # video capture width
 IMG_H = 480  # video capture height
 IMG_BORDER = 40  # video capture border width (won't be used for detection)
 DETECT_THRESHOLD = 0.7  # only display digits with 70%+ probability 
-CONTOUR_COLOR = (0, 255, 255)  # digit frame color
-LABEL_COLOR = (255, 255, 0)  # digit label color
 LABEL_SIZE = 0.7  # digit label size (70%)
 RUNTIME_ONLY = True  # use TF Lite runtime instead of Tensorflow
 
@@ -51,7 +49,7 @@ cv2.imwrite('./03-binary-morph.jpg', img_binary)
 contours, _ = cv2.findContours(img_binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 img_binary_copy = img_binary.copy()
-img_copy = img.copy()
+img_binary_result_copy = img_binary.copy()
 
 # iterate all contours
 for contour in contours:
@@ -59,8 +57,6 @@ for contour in contours:
     
     # draw rectangle and text label around the binary image area
     cv2.rectangle(img_binary_copy, (x, y), (x + w, y + h), (255, 255, 255), 2)
-    # draw rectangle and text label around the original image area
-    cv2.rectangle(img, (x, y), (x + w, y + h), CONTOUR_COLOR, 2)
     
     # if the area is overlapping the border, ignore it
     if x < IMG_BORDER or x + w > (IMG_W - 1) - IMG_BORDER or y < IMG_BORDER or y + h > (IMG_H - 1) - IMG_BORDER:
@@ -98,16 +94,14 @@ for contour in contours:
     print(f'Detected digit: [{label}] at x={x}, y={y}, w={w}, h={h} ({prob*100:.3f}%)')
     
     # draw rectangle and text label around the (copied) original image area
-    cv2.rectangle(img_copy, (x, y), (x + w, y + h), CONTOUR_COLOR, 2)
-    cv2.putText(img_copy, str(label), (x + w // 5, y - h // 5), cv2.FONT_HERSHEY_COMPLEX, LABEL_SIZE, LABEL_COLOR, 2)
+    cv2.rectangle(img_binary_result_copy, (x, y), (x + w, y + h), (255, 255, 255), 1)
+    cv2.putText(img_binary_result_copy, str(label), (x + w // 5, y - h // 5), cv2.FONT_HERSHEY_COMPLEX, LABEL_SIZE, (255, 255, 255), 1)
 
 # display and save results
 cv2.imshow('Contours on binary image', img_binary_copy)
 cv2.imwrite('./04-binary-contours.jpg', img_binary_copy)
-cv2.imshow('Contours on original image', img)
-cv2.imwrite('./05-original-contours.jpg', img)
-cv2.imshow('MNIST detection result', img_copy)
-cv2.imwrite('./06-mnist-detection.jpg', img_copy)
+cv2.imshow('MNIST detection result', img_binary_result_copy)
+cv2.imwrite('./05-mnist-detection.jpg', img_binary_result_copy)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
