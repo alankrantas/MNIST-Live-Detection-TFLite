@@ -8,12 +8,12 @@ Be noted that the training dataset are consisted of handwritten numbers with cer
 
 ### Testing environment
 
-* Python 3.9.9 (PC); Pytho 3.7.3 (Raspberry Pis)
+* Python 3.9.9 (PC) / 3.7.3 (Raspberry Pis)
 * AutoKeras 1.0.16 post1 (will install Numpy, Pandas, scikit-learn and Tensorflow etc. if you don't have them)
 * Tensorflow 2.5.2
 * [TF Lite runtime](https://github.com/google-coral/pycoral/releases/) 2.5.0 post1 (both PC and RPis)
 * [OpenCV](https://pypi.org/project/opencv-python/) 4.5.5
-* USB/laptop webcam
+* USB webcam
 
 If you have GPU and installed CUDA, AutoKeras will use it for training.
 
@@ -168,7 +168,7 @@ Detected digit: [0] at x=79, y=125, w=56, h=56 (100.000%)
 
 ![05-mnist-detection](https://user-images.githubusercontent.com/44191076/149882061-d969a6cd-912d-46d9-bf13-62c61b385509.jpg)
 
-```mnist_tflite_live_detection.py``` is the live video version using a webcam, which draws the result directly on the original images.
+```mnist_tflite_live_detection.py``` is the live video version using a webcam, which draws the result directly on the original images. You can check out the video demo in ```live-demo.mp4```.
 
 Both script can either use Tensorflow Lite from the standard Tensorflow package or pure TF Lite runtime.
 
