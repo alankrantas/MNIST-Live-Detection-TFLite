@@ -112,7 +112,20 @@ _________________________________________________________________
 
 My model is 611 KB and its Lite version is 432 KB.
 
-```mnist_tflite_detection.py``` loads a single photo file, it will save images in different preprocessing step and show the final black-and-white result:
+```mnist_tflite_detection.py``` loads a single photo file, it will save images in different preprocessing step, print out digit labels/positions and show the final black-and-white result:
+
+```
+Detected digit: [5] at x=71, y=292, w=43, h=54 (100.000%)
+Detected digit: [6] at x=176, y=288, w=32, h=47 (100.000%)
+Detected digit: [8] at x=373, y=282, w=42, h=43 (99.861%)
+Detected digit: [7] at x=267, y=282, w=36, h=52 (99.974%)
+Detected digit: [9] at x=473, y=271, w=32, h=57 (99.852%)
+Detected digit: [2] at x=279, y=133, w=38, h=52 (99.997%)
+Detected digit: [1] at x=186, y=130, w=29, h=60 (99.874%)
+Detected digit: [4] at x=471, y=129, w=52, h=55 (100.000%)
+Detected digit: [3] at x=378, y=126, w=29, h=55 (100.000%)
+Detected digit: [0] at x=79, y=125, w=56, h=56 (100.000%)
+```
 
 ![05-mnist-detection](https://user-images.githubusercontent.com/44191076/149882061-d969a6cd-912d-46d9-bf13-62c61b385509.jpg)
 
