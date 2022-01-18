@@ -13,12 +13,15 @@ IMG_W, IMG_H = img.shape[1], img.shape[0]
 
 # convert to gray
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+cv2.imwrite('./01-gray.jpg', img_gray)
 
 # image thresholding (to black and white)
 _, img_binary = cv2.threshold(img_gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+cv2.imwrite('./02-binary.jpg', img_binary)
 
 # do morphological closing to filter out noise
 img_binary = cv2.morphologyEx(img_binary, cv2.MORPH_CLOSE, MORPH_KERNEL)
+cv2.imwrite('./03-binary-morph.jpg', img_binary)
 
 # find contours (possible digits area) in the frame
 contours, _ = cv2.findContours(img_binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -37,9 +40,6 @@ for contour in contours:
 # display results
 cv2.imshow('Original image', img)
 cv2.imshow('Contours on binary image', img_binary)
+cv2.imwrite('./04-binary-contours.jpg', img_binary)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
-
-
-
