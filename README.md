@@ -145,6 +145,8 @@ Prediction MSE: 0.1737
 weighted avg       0.99      0.99      0.99     10000
 ```
 
+It also shows first 40 test digits with their predicted labels:
+
 ![mnist-model-test](https://user-images.githubusercontent.com/44191076/149889067-6f124477-0d80-4b80-972b-136e49f10ab9.jpg)
 
 ## Digit detection
