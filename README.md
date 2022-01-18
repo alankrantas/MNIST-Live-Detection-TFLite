@@ -2,7 +2,7 @@
 
 ![mnist_live_screenshot](https://user-images.githubusercontent.com/44191076/149617350-2b805e9f-4204-4108-a3bf-6e5c6b2eaaee.png)
 
-This example use [AutoKeras](https://autokeras.com/) to train a CNN model with the [MNIST handwriting dataset](https://www.tensorflow.org/datasets/catalog/mnist), convert it to [Tensorflow Lite](https://www.tensorflow.org/lite) version, and use [OpenCV](https://opencv.org/) to do multiple-digits live detection/classification. Tested on PC and Raspberry Pi 3B+/4B.
+This example use [AutoKeras](https://autokeras.com/) to train a CNN model with the [MNIST handwriting dataset](https://www.tensorflow.org/datasets/catalog/mnist), convert it to [Tensorflow Lite](https://www.tensorflow.org/lite) version, and use [OpenCV](https://opencv.org/) to do multiple-digits detection/classification, either using a still image or live video. Tested on PC and Raspberry Pi 3B+/4B.
 
 Be noted that the training dataset are consisted of handwritten numbers with certain features, etc. So it's better to use a sharpie on white papers and make the digits as square and clear as possible. Long, thin numbers are likely to get incorrect results. Also the scripts will ignore anything on the border of the image/video and digits that are too big or too small (can be adjusted in the code).
 
