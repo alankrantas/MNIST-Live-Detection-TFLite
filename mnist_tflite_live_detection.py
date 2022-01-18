@@ -2,9 +2,9 @@ TF_LITE_MODEL = './mnist.tflite'  # TF Lite model
 IMG_W = 640  # video capture width
 IMG_H = 480  # video capture height
 IMG_BORDER = 40  # video capture border width (won't be used for detection)
-DETECT_THRESHOLD = 0.7  # only display digits with 70%+ probability 
-CONTOUR_COLOR = (0, 255, 255)  # digit frame color
-LABEL_COLOR = (255, 255, 0)  # digit label color
+DETECT_THRESHOLD = 0.7  # only display digits with 70%+ probability
+CONTOUR_COLOR = (0, 255, 255)  # digit frame color (BGR)
+LABEL_COLOR = (255, 255, 0)  # digit label color (BGR)
 LABEL_SIZE = 0.7  # digit label size (70%)
 RUNTIME_ONLY = True  # use TF Lite runtime instead of Tensorflow
 
