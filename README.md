@@ -18,7 +18,7 @@ If you have GPU and installed CUDA, AutoKeras will use it for training.
 
 ### Files
 
-```opencv_preprocessing_test.py``` use a still image to demostrate the preprocessing effects used in the live detection script. It will display the original image and the binary image with contours (boxes around possible digits).
+```opencv_preprocessing_test.py``` use a still image to demostrate the preprocessing effects used in the live detection script. It will display both the original image and the binary image with contours (boxes around possible digits). It also saves images in different step of the process.
 
 ![2](https://user-images.githubusercontent.com/44191076/149666600-3eb9e977-34cf-4d1a-8c42-3bd556ffe4e5.png)
 
