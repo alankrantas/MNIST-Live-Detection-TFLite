@@ -30,7 +30,6 @@ print('Predicting...')
 interpreter.set_tensor(input_details[0]['index'], x_test)
 interpreter.invoke()
 predicted = interpreter.get_tensor(output_details[0]['index']).argmax(axis=1)
-print('')
 
 # inspect metrics
 from sklearn.metrics import accuracy_score, mean_squared_error
