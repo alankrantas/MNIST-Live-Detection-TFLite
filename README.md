@@ -112,11 +112,11 @@ _________________________________________________________________
 
 My model is 611 KB and its Lite version is 432 KB.
 
-```mnist_tflite_detection.py``` loads a single photo file, it will save images in different preprocessing step and show the final results:
+```mnist_tflite_detection.py``` loads a single photo file, it will save images in different preprocessing step and show the final black-and-white result:
 
-![2](https://user-images.githubusercontent.com/44191076/149666600-3eb9e977-34cf-4d1a-8c42-3bd556ffe4e5.png)
+![05-mnist-detection](https://user-images.githubusercontent.com/44191076/149882061-d969a6cd-912d-46d9-bf13-62c61b385509.jpg)
 
-```mnist_tflite_live_detection.py``` is the live video version using a webcam.
+```mnist_tflite_live_detection.py``` is the live video version using a webcam, which draws the result directly on the original images.
 
 Both script can either use Tensorflow Lite from the standard Tensorflow package or pure TF Lite runtime.
 
