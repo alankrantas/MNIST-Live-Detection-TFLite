@@ -1,5 +1,6 @@
 TEST_FILE = './test.jpg'  # test image file
 IMG_BORDER = 40  # image border width (won't be used for finding contours)
+CONTOUR_COLOR = (0, 255, 255)  # digit frame color
 
 import cv2
 import numpy as np
@@ -34,12 +35,16 @@ for contour in contours:
     if x < IMG_BORDER or x + w > (IMG_W - 1) - IMG_BORDER or y < IMG_BORDER or y + h > (IMG_H - 1) - IMG_BORDER:
         continue
     
-    # draw rectangle around the image area
+    # draw rectangle around the binary image area
     cv2.rectangle(img_binary, (x, y), (x + w, y + h), (255, 255, 255), 2)
+    # draw rectangle around the original image area
+    cv2.rectangle(img, (x, y), (x + w, y + h), CONTOUR_COLOR, 2)
 
 # display results
-cv2.imshow('Original image', img)
+
 cv2.imshow('Contours on binary image', img_binary)
 cv2.imwrite('./04-binary-contours.jpg', img_binary)
+cv2.imshow('Contours on original image', img)
+cv2.imwrite('./05-original-contours.jpg', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
