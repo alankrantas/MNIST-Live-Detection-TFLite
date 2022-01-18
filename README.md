@@ -1,10 +1,10 @@
-# MNIST Live Detection using OpenCV, Tensorflow Lite and AutoKeras
+# MNIST Still/Live Detection using OpenCV, Tensorflow Lite and AutoKeras
 
 ![mnist_live_screenshot](https://user-images.githubusercontent.com/44191076/149617350-2b805e9f-4204-4108-a3bf-6e5c6b2eaaee.png)
 
 This example use [AutoKeras](https://autokeras.com/) to train a CNN model with the [MNIST handwriting dataset](https://www.tensorflow.org/datasets/catalog/mnist), convert it to [Tensorflow Lite](https://www.tensorflow.org/lite) version, and use [OpenCV](https://opencv.org/) to do multiple-digits live detection/classification. Tested on PC and Raspberry Pi 3B+/4B.
 
-Due to the training dataset your digits has to be as square as possible. Long, thin numbers are more likely to get incorrect results.
+Be noted that the training dataset are consisted of handwritten numbers with certain features, etc. So it's better to use a sharpie on white papers and make the digits as square and clear as possible. Long, thin numbers are likely to get incorrect results. Also the scripts will ignore anything on the border of the image/video and digits that are too big or too small (can be adjusted in the code).
 
 ### Testing environment
 
@@ -13,14 +13,11 @@ Due to the training dataset your digits has to be as square as possible. Long, t
 * Tensorflow 2.5.2
 * [TF Lite runtime](https://github.com/google-coral/pycoral/releases/) 2.5.0 post1 (both PC and RPis)
 * [OpenCV](https://pypi.org/project/opencv-python/) 4.5.5
+* USB/laptop webcam
 
 If you have GPU and installed CUDA, AutoKeras will use it for training.
 
 ### Files
-
-```opencv_preprocessing_test.py``` use a still image to demostrate the preprocessing effects used in the live detection script. It will display both the original image and the binary image with contours (boxes around possible digits). It also saves images in different step of the process.
-
-![2](https://user-images.githubusercontent.com/44191076/149666600-3eb9e977-34cf-4d1a-8c42-3bd556ffe4e5.png)
 
 ```mnist_tflite_trainer.py``` is the model trainer and ```mnist.tflite``` was my result generated from it.
 
@@ -115,7 +112,13 @@ _________________________________________________________________
 
 My model is 611 KB and its Lite version is 432 KB.
 
-```mnist_tflite_live_detection.py``` is the main detection script. It can use either Tensorflow Lite from standard Tensorflow package or the pure TF Lite runtime.
+```mnist_tflite_detection.py``` loads a single photo file, it will save images in different preprocessing step and show the final results:
+
+![2](https://user-images.githubusercontent.com/44191076/149666600-3eb9e977-34cf-4d1a-8c42-3bd556ffe4e5.png)
+
+```mnist_tflite_live_detection.py``` is the live video version using a webcam.
+
+Both script can either use Tensorflow Lite from the standard Tensorflow package or pure TF Lite runtime.
 
 ### Note on image thresholding
 
