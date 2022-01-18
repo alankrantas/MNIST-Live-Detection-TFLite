@@ -112,7 +112,44 @@ _________________________________________________________________
 
 My model is 611 KB and its Lite version is 432 KB.
 
-```mnist_tflite_detection.py``` loads a single photo file, it will save images in different preprocessing step, print out digit labels/positions and show the final black-and-white result:
+## Model test
+
+```mnist_tflite_model_test.py``` can be used to test the TF lite model (using the original MNIST test dataset):
+
+```
+Loading ./mnist.tflite ...
+input shape: [ 1 28 28]
+output shape: [ 1 10]
+new input shape: [10000    28    28]
+new output shape: [10000    10]
+
+Predicting...
+Prediction accuracy: 0.9897
+Prediction MSE: 0.1737
+
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99       980
+           1       0.99      1.00      0.99      1135
+           2       0.99      0.98      0.99      1032
+           3       0.99      0.99      0.99      1010
+           4       0.98      0.99      0.99       982
+           5       0.99      0.99      0.99       892
+           6       0.99      0.99      0.99       958
+           7       0.98      0.99      0.99      1028
+           8       0.99      0.99      0.99       974
+           9       1.00      0.98      0.99      1009
+
+    accuracy                           0.99     10000
+   macro avg       0.99      0.99      0.99     10000
+weighted avg       0.99      0.99      0.99     10000
+```
+
+![mnist-model-test](https://user-images.githubusercontent.com/44191076/149889067-6f124477-0d80-4b80-972b-136e49f10ab9.jpg)
+
+## Digit detection
+
+```mnist_tflite_detection.py``` is for a single still photo: it will save images to demostrate different preprocessing step, print out digit labels/positions and show the final black-and-white result:
 
 ```
 Detected digit: [5] at x=71, y=292, w=43, h=54 (100.000%)
