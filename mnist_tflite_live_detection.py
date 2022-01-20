@@ -25,7 +25,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # get input shape
-INPUT_SHAPE = input_details[0]['shape'][1:3]
+INPUT_SHAPE = (input_details[0]['shape'][2], input_details[0]['shape'][1])
 
 # kernel for morphological closing
 MORPH_KERNEL = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
