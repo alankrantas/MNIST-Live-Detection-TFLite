@@ -2,9 +2,9 @@ TF_LITE_MODEL = './mnist.tflite'  # TF Lite model
 IMG_W = 640  # video capture width
 IMG_H = 480  # video capture height
 IMG_BORDER = 40  # video capture border width (won't be used for detection)
-DETECT_THRESHOLD = 0.7  # only display digits with 70%+ probability
-CONTOUR_COLOR = (0, 255, 255)  # digit frame color (BGR)
-LABEL_COLOR = (255, 255, 0)  # digit label color (BGR)
+DETECT_THRESHOLD = 0.7  # only display digits with 70%+ probability 
+CONTOUR_COLOR = (0, 255, 255)  # digit frame color
+LABEL_COLOR = (255, 255, 0)  # digit label color
 LABEL_SIZE = 0.7  # digit label size (70%)
 RUNTIME_ONLY = True  # use TF Lite runtime instead of Tensorflow
 
@@ -25,7 +25,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # get input shape
-INPUT_SHAPE = (input_details[0]['shape'][2], input_details[0]['shape'][1])
+INPUT_H, INPUT_W = input_details[0]['shape'][1:3]
 
 # kernel for morphological closing
 MORPH_KERNEL = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
@@ -60,7 +60,7 @@ while cap.isOpened():
             continue
         
         # if the area is too small or too large, ignore it
-        if w < INPUT_SHAPE[0] // 2 or h < INPUT_SHAPE[1] // 2 or w > IMG_W // 2 or h > IMG_H // 2:
+        if w < INPUT_W // 2 or h < INPUT_H // 2 or w > IMG_W // 2 or h > IMG_H // 2:
             continue
         
         # get the image from the area
@@ -73,7 +73,7 @@ while cap.isOpened():
         img = cv2.copyMakeBorder(img, top=y_pad, bottom=y_pad, left=x_pad, right=x_pad, borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0))
         
         # resize image to input size
-        img = cv2.resize(img, INPUT_SHAPE, interpolation=cv2.INTER_AREA)
+        img = cv2.resize(img, (INPUT_W, INPUT_H), interpolation=cv2.INTER_AREA)
 
         # make prediction
         interpreter.set_tensor(input_details[0]['index'], np.expand_dims(img, axis=0))
