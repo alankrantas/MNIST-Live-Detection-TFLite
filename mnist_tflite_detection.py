@@ -24,14 +24,14 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # get input shape
-INPUT_SHAPE = (input_details[0]['shape'][2], input_details[0]['shape'][1])
+INPUT_H, INPUT_W = input_details[0]['shape'][1:3]
 
 # kernel for morphological closing
 MORPH_KERNEL = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
 
 # load image and get width, height
 img = cv2.imread(TEST_FILE, cv2.IMREAD_COLOR)
-IMG_W, IMG_H = img.shape[1], img.shape[0]
+IMG_H, IMG_W = img.shape[:2]
 
 # convert to gray
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -63,7 +63,7 @@ for contour in contours:
         continue
     
     # if the area is too small or too large, ignore it
-    if w < INPUT_SHAPE[0] // 2 or h < INPUT_SHAPE[1] // 2 or w > IMG_W // 2 or h > IMG_H // 2:
+    if w < INPUT_W // 2 or h < INPUT_H // 2 or w > IMG_W // 2 or h > IMG_H // 2:
         continue
     
     # get the image from the area
@@ -76,7 +76,7 @@ for contour in contours:
     img_digit = cv2.copyMakeBorder(img_digit, top=y_pad, bottom=y_pad, left=x_pad, right=x_pad, borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0))
         
     # resize image to input size
-    img_digit = cv2.resize(img_digit, INPUT_SHAPE, interpolation=cv2.INTER_AREA)
+    img_digit = cv2.resize(img_digit, (INPUT_W, INPUT_H), interpolation=cv2.INTER_AREA)
 
     # make prediction
     interpreter.set_tensor(input_details[0]['index'], np.expand_dims(img_digit, axis=0))
