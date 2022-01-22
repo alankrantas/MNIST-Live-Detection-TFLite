@@ -118,8 +118,31 @@ My model is 611 KB and its Lite version is 432 KB.
 
 ```
 Loading ./mnist.tflite ...
-input shape: [ 1 28 28]
-output shape: [ 1 10]
+
+input details:
+[{'dtype': <class 'numpy.uint8'>,
+  'index': 0,
+  'name': 'input_1',
+  'quantization': (0.0, 0),
+  'quantization_parameters': {'quantized_dimension': 0,
+                              'scales': array([], dtype=float32),
+                              'zero_points': array([], dtype=int32)},
+  'shape': array([ 1, 28, 28]),
+  'shape_signature': array([-1, 28, 28]),
+  'sparsity_parameters': {}}]
+
+output details:
+[{'dtype': <class 'numpy.float32'>,
+  'index': 16,
+  'name': 'Identity',
+  'quantization': (0.0, 0),
+  'quantization_parameters': {'quantized_dimension': 0,
+                              'scales': array([], dtype=float32),
+                              'zero_points': array([], dtype=int32)},
+  'shape': array([ 1, 10]),
+  'shape_signature': array([-1, 10]),
+  'sparsity_parameters': {}}]
+
 new input shape: [10000    28    28]
 new output shape: [10000    10]
 
