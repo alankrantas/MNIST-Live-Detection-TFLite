@@ -8,7 +8,7 @@ from pprint import pprint
 (_, _), (x_test, y_test) = mnist.load_data()
 
 # load TF Lite model and inspect input/output shape
-print('Loading', TF_LITE_MODEL, '...')
+print('Loading', TF_LITE_MODEL, '...\n')
 interpreter = tf.lite.Interpreter(model_path=TF_LITE_MODEL)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
