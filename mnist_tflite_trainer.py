@@ -14,7 +14,7 @@ clf.fit(x_train, y_train)
 
 # evaluate model
 loss, accuracy = clf.evaluate(x_test, y_test)
-print(f'\nPrediction loss: {loss:.3f}, accurcy: {accuracy*100:.3f}%\n')
+print(f'\nPrediction loss: {loss:.3f}, accuracy: {accuracy*100:.3f}%\n')
 
 # export model
 model = clf.export_model()
