@@ -117,6 +117,9 @@ My model is 611 KB and its Lite version is 432 KB.
 ```mnist_tflite_model_test.py``` can be used to test the TF lite model (also using the original MNIST test dataset):
 
 ```
+test image shape: (10000, 28, 28)
+test label shape: (10000,)
+
 Loading ./mnist.tflite ...
 
 input details:
