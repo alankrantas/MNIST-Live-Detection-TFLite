@@ -2,6 +2,7 @@ TF_LITE_MODEL = './mnist.tflite'
 
 import tensorflow as tf
 from tensorflow.keras.datasets import mnist
+from pprint import pprint
 
 # load MNIST test dataset
 (_, _), (x_test, y_test) = mnist.load_data()
@@ -12,8 +13,13 @@ interpreter = tf.lite.Interpreter(model_path=TF_LITE_MODEL)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
-print('input shape:', input_details[0]['shape'])
-print('output shape:', output_details[0]['shape'])
+
+print('input details:')
+pprint(input_details)
+print('')
+print('output details:')
+pprint(output_details)
+print('')
 
 # resize the input/output shape to fit the test dataset (so we can do batch prediction)
 interpreter.resize_tensor_input(input_details[0]['index'], x_test.shape)
@@ -21,6 +27,7 @@ interpreter.resize_tensor_input(output_details[0]['index'], y_test.shape)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
+
 print('new input shape:', input_details[0]['shape'])
 print('new output shape:', output_details[0]['shape'])
 print('')
