@@ -6,6 +6,9 @@ from pprint import pprint
 
 # load MNIST test dataset
 (_, _), (x_test, y_test) = mnist.load_data()
+print('test image shape:', x_test.shape)
+print('test label shape:', y_test.shape)
+print('')
 
 # load TF Lite model and inspect input/output shape
 print('Loading', TF_LITE_MODEL, '...\n')
